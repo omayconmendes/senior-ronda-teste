@@ -1,45 +1,67 @@
-<nz-card
-      style="margin-top: 1.5rem"
-      nzTitle="Consulta"
-    >
-      <div nz-row [nzGutter]="24">
-        <div nz-col [nzSpan]="24">
-          <nz-form-item>
-            <nz-form-control>
-              <nz-table
-                [nzData]="guests">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Entrada</th>
-                    <th>Data de Saída</th>
-                    <th>Veiculo</th>
-                    <th>Valor (R$)</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let data of guests">
-                    <td>{{data?.id}}</td>
-                    <td>{{data?.nome}}</td>
-                    <td>{{data.cpf | mask: '000.000.000-00'}}</td>
-                    <td>{{data.checkIn}}</td>
-                    <td>{{data.checkOut}}</td>
-                    <td>{{data.veiculo == false ? "Não" : "Sim"}}</td>
-                    <td>{{data.preco.toFixed(2).replace('.', ',')}}</td>
-                    <td style="display: flex; gap: 1rem;">
-                      <a routerLink="/revisao/{{data.id}}">Editar</a>
-                      <a routerLink="/check-out/{{data.id}}">Check out</a>
-                    </td>
-                  </tr>
-                </tbody>
-                <nz-pagination [nzPageIndex]="1" nzShowSizeChanger [nzPageSize]="5"></nz-pagination>
-              </nz-table>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+<nz-card style="margin-top: 1.5rem" nzTitle="Consulta">
+  <form
+    nz-form
+    [formGroup]="consultaForm"
+    [nzLayout]="'vertical'"
+    style="display: flex; flex-direction: column; gap: 1rem"
+  >
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-label>Filtro</nz-form-label>
+          <nz-form-control>
+            <nz-radio-group formControlName="filtro" nzName="filtro" (ngModelChange)="onChangeFiltro($event)">
+              <label nz-radio nzValue='ainda presentes'>Pesssoas ainda presentes</label>
+              <label nz-radio nzValue='deixaram o hotel'
+                >Pessoas que já deixaram o hotel</label
+              >
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
       </div>
-    </nz-card>
-
+    </div>
+  
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="24">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-table #nzTable [nzData]="guests">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de Entrada</th>
+                <th>Data de Saída</th>
+                <th>Veiculo</th>
+                <th>Valor (R$)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of guests">
+                <td>{{ data?.id }}</td>
+                <td>{{ data?.nome }}</td>
+                <td>{{ data.cpf | mask : "000.000.000-00" }}</td>
+                <td>{{ data.checkIn }}</td>
+                <td>{{ data.checkOut }}</td>
+                <td>{{ data.veiculo == false ? "Não" : "Sim" }}</td>
+                <td>{{ data.preco.toFixed(2).replace(".", ",") }}</td>
+                <td style="display: flex; gap: 1rem">
+                  <a routerLink="/revisao/{{ data.id }}">Editar</a>
+                  <a routerLink="/check-out/{{ data.id }}">Check out</a>
+                </td>
+              </tr>
+            </tbody>
+            <nz-pagination
+              [nzPageIndex]="1"
+              nzShowSizeChanger
+              [nzPageSize]="5"
+            ></nz-pagination>
+          </nz-table>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>
+</nz-card>

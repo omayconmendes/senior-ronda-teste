@@ -35,6 +35,8 @@ import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzAlertModule } from "ng-zorro-antd/alert";
 import { NzTableModule } from "ng-zorro-antd/table";
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
 import { registerLocaleData } from "@angular/common";
 import pt from "@angular/common/locales/pt";
 import { TableComponent } from "./components/table/table.component";
@@ -81,6 +83,7 @@ registerLocaleData(pt);
     NzModalModule,
     NzTableModule,
     NzPaginationModule,
+    NzDropDownModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_BR }],
