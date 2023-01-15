@@ -1,0 +1,14 @@
+{
+  "guests": [
+    {
+      "id": 1,
+      "nome": "Maycon de Souza",
+      "cpf": "13406721702",
+      "telefone": "47991952105",
+      "checkIn": "2023-01-16T14:50:16",
+      "checkOut": "2023-01-27T14:48:20",
+      "veiculo": true,
+      "preco": 1350
+    }
+  ]
+}

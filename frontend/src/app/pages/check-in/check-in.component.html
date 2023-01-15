@@ -1,0 +1,102 @@
+<nz-content style="padding: 0 50px">
+  <button
+    nz-button
+    nzType="primary"
+    style="margin: 25px 0"
+    (click)="iniciaCheckIn()"
+  >
+    Incluir Pessoa
+  </button>
+  <nz-card nzTitle="Novo Check in" *ngIf="novoCheckIn">
+    <form 
+      nz-form 
+      [nzLayout]="'vertical'"
+      [formGroup]="checkInForm"
+      style="margin-bottom: 1.5rem; display:flex; flex-direction: column; gap: 1rem;"
+  >
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label> Nome completo </nz-form-label>
+            <nz-form-control nzErrorTip="Digite o nome completo">
+              <input type="text" nz-input pattern="[a-zA-Z ]*" formControlName="nome" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6">
+          <nz-form-item>
+            <nz-form-label> CPF </nz-form-label>
+            <nz-form-control nzErrorTip="Cpf inválido">
+              <input type="text" nz-input formControlName="cpf" mask="000.000.000-00" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="6">
+          <nz-form-item>
+            <nz-form-label> Celular </nz-form-label>
+            <nz-form-control nzErrorTip="Celular inválido">
+              <input type="text" nz-input formControlName="telefone" mask="(00) 00000-0000" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="24">
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label> Data / Hora De Entrada </nz-form-label>
+            <nz-form-control nzErrorTip="Data inválida">
+              <input 
+                nzAllowClear
+                type="datetime-local" 
+                step="1" 
+                style="width: 100%" 
+                nz-input 
+                formControlName="dataEntrada" 
+                (ngModelChange)="onChangeCheckIn($event)"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label> Data / Hora De Saída </nz-form-label>
+            <nz-form-control nzErrorTip="Data inválida">
+              <input type="datetime-local" step="1" style="width: 100%" nz-input nzFormat="dd/MM/YYYY" formControlName="dataSaida" (ngModelChange)="onChangeCheckOut($event)" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-form-item>
+            <nz-form-label>Possui veículo ?</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorTip">
+              <nz-radio-group
+                formControlName="veiculo"
+              >
+                <label nz-radio nzValue="Sim"
+                  >Sim</label
+                >
+                <label nz-radio nzValue="Não"
+                  >Não</label
+                >
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+  
+      </div>
+    </form>
+
+    <button
+      nz-button
+      nzType="primary"
+      style="margin-right: 1rem"
+      (click)="submitForm()"
+    >
+      Salvar
+    </button>
+    <button nz-button (click)="cancelarCheckIn()">Cancelar</button>
+  </nz-card>
+  <div style="background-color: #fff; max-height: max-content;">
+    <app-table></app-table>
+  </div>
+</nz-content>
