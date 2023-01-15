@@ -1,0 +1,40 @@
+# Manual do Usuário
+
+Senior Ronda Teste
+
+## Check-in
+
+Na tela inicial será apresentado um botão para incluir pessoa, onde o usuário poderá fazer check-in. Também será aprestado a tabela para consulta dos hóspedes cadastrados.
+
+**Novo Check in:**
+
+- Não permite incluir campos vazios;
+- O campo **Nome** não permite incluir números;
+- O campo **Nome** possui validador. Deverá possuir, no mínimo 4 letras.
+- O campo **CPF** possui validador. Permitirá inclusão apenas de números e possui máscara para CPF.
+- O campo **Celular** possui validador. Permitirá inclusão apenas de números e possui máscara para Celular.
+- O campo **Data de entrada** permite selecionar data e hora. Possui validação, permitindo selecionar apenas data igual ou posterior à data atual.
+- O campo **Data de saída** permite selecionar data e hora. Possui validação, permitindo selecionar apenas data posterior à data de entrada.
+- O campo **Possui veículo ?** é obrigatório.
+
+**Consulta:**
+
+- A tabela de consulta apresenta as informações cadastradas no backend.
+- São apresentados os campos: Id, Nome, CPF, Data de entrada, Data de Saída, Veículo, Preço e links para Edição do cadastro e Check out.
+
+**Edição:**
+
+- Ao clickar no link Editar o usuário será direcionado à tela de edição.
+- Na tela de edição serão apresentados todos os campos da tela Novo Check in.
+- Na tela de edição o usuário poderá editar os campos apresentados no Check in, com exceção do campo Data de entrada.
+- Na tela de edição o usuário poderá Salvar as alterações, Cancelar a edição e Deletar o cadastro do hóspede selecionado.
+- Se o usuário selecionar o botão Deletar, o cadastro será deletado do backend.
+
+**Check out:**
+
+- Ao clickar no linke Check out, na tabela de consulta, o usuário será direcionado à tela de check out.
+- As informações serão mostradas sem possibilidade de edição.
+- Ao carregar a página, a data de saída será atualizada para a nada atual.
+- Ao clickar no link Calcular, será mostrado em tela o valor total, calculado de acordo com as regras da especificação.
+- Ao clickar em cancelar, o usuário será redirecionado à tela inicial, sem salvar as informações.
+- Ao clickar em salvar, o sistema irá atualizar as informações de data de saída e valor e será feito uma requisição de update no backend.
