@@ -41,7 +41,7 @@ export class RevisaoComponent {
       ],
       cpf: [{ value: null, disabled: false }, [Validators.required]],
       telefone: [{ value: null, disabled: false }, [Validators.required]],
-      dataEntrada: [{ value: null, disabled: true }, [Validators.required]],
+      dataEntrada: [{ value: null, disabled: true }],
       dataSaida: [{ value: null, disabled: false }, [Validators.required]],
       veiculo: [{ value: null, disabled: false }, [Validators.required]],
     });
@@ -62,10 +62,6 @@ export class RevisaoComponent {
     });
   }
 
-  onChangeCheckOut(item: string): void {
-    console.log(item);
-  }
-
   calculaPreco(): number {
     const diariaDiaDeSemana = 120;
     const diariaFinalDeSemana = 150;
@@ -77,7 +73,6 @@ export class RevisaoComponent {
       moment(this.checkInForm.get("dataEntrada")?.value),
       "days"
     );
-    console.log(dias);
 
     if (this.checkInForm.get("veiculo")?.value == "Sim") {
       valorTotal = (diariaDiaDeSemana + vagaGaragemDiaDeSemana) * dias;

@@ -51,8 +51,7 @@
                 step="1" 
                 style="width: 100%" 
                 nz-input 
-                formControlName="dataEntrada" 
-                (ngModelChange)="onChangeCheckIn($event)"
+                formControlName="dataEntrada"
               />
             </nz-form-control>
           </nz-form-item>
@@ -61,7 +60,7 @@
           <nz-form-item>
             <nz-form-label> Data / Hora De Saída </nz-form-label>
             <nz-form-control nzErrorTip="Data inválida">
-              <input type="datetime-local" step="1" style="width: 100%" nz-input nzFormat="dd/MM/YYYY" formControlName="dataSaida" (ngModelChange)="onChangeCheckOut($event)" />
+              <input type="datetime-local" step="1" style="width: 100%" nz-input nzFormat="dd/MM/YYYY" formControlName="dataSaida" />
             </nz-form-control>
           </nz-form-item>
         </div>

@@ -44,7 +44,6 @@ export class TableComponent {
   }
 
   onChangeFiltro(item: any): Array<Guest> {
-    
     const dataAtual = new Date()
 
     if (item == 'ainda presentes') {
@@ -52,7 +51,7 @@ export class TableComponent {
       return this.guests
     }
 
-    if (item == 'deixaram o hotel') {    
+    if (item == 'deixaram o hotel') {
       this.guests = this.guests.filter((i: Guest) => i.checkOut < moment(dataAtual).format('DD/MM/YYYY'))
       return this.guests
     }
